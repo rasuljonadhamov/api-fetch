@@ -1,0 +1,14 @@
+#block {
+  width: 400px;
+  margin: 100px auto;
+}
+
+#item {
+  text-align: center;
+  margin-top: 100px;
+}
+
+#block img {
+  width: 200px;
+  margin: 10px auto;
+}
