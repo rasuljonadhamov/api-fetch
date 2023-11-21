@@ -4,9 +4,35 @@
   box-sizing: border-box;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  margin-top: 50px;
+  margin-bottom: 0;
+}
+
+input {
+  padding: 8px 5px;
+  outline: none;
+}
+
+button {
+  padding: 8px 5px;
+  border: none;
+  background-color: blue;
+  color: aliceblue;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
 #block {
   width: 1200px;
-  margin: 100px auto;
+  margin: 15px auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
