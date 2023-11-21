@@ -30,6 +30,16 @@ button {
   margin-left: 8px;
 }
 
+select {
+  width: 24%;
+  margin-bottom: 20px;
+  padding: 7px;
+}
+
+#qita input {
+  width: 47%;
+}
+
 #block {
   width: 1200px;
   margin: 15px auto;

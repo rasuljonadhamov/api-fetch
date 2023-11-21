@@ -1,6 +1,7 @@
 const block = document.getElementById("block");
 const search = document.getElementById("search");
 const btn = document.getElementById("btn");
+const continent = document.getElementById("qita");
 
 function searching() {
   if (search.value) {
@@ -26,19 +27,22 @@ function searching() {
 fetch("https://restcountries.com/v3.1/all")
   .then((response) => response.json())
   .then((json) => {
-    json.forEach((country) => {
-      console.log(country);
+    return json.forEach((country) => {
+      console.log(country.continents);
       const li = document.createElement("li");
       const img = document.createElement("img");
       const h1 = document.createElement("h1");
       const h3 = document.createElement("h3");
+      const p = document.createElement("p");
       h1.textContent = country.name.common;
       h3.textContent = country.capital;
+      p.textContent = country.continents;
       img.setAttribute("src", `${country.flags.png}`);
 
       li.appendChild(img);
       li.appendChild(h1);
       li.appendChild(h3);
+      li.appendChild(p);
       block.appendChild(li);
     });
   })
@@ -53,4 +57,43 @@ search.addEventListener("input", function (e) {
 btn.addEventListener("click", function (e) {
   e.preventDefault();
   searching();
+});
+
+continent.addEventListener("change", function (json) {
+  const selectedCon = this.value;
+
+  fetch("https://restcountries.com/v3.1/all")
+    .then((response) => response.json())
+    .then((json) => {
+      let arr = [];
+      json.forEach((el) => {
+        if (el.continents[0] == selectedCon) {
+          arr.push(el);
+        }
+      });
+
+      if (arr.length) {
+        block.innerHTML = "";
+        arr.forEach((country) => {
+          const li = document.createElement("li");
+          const img = document.createElement("img");
+          const h1 = document.createElement("h1");
+          const h3 = document.createElement("h3");
+          const p = document.createElement("p");
+          h1.textContent = country.name.common;
+          h3.textContent = country.capital;
+          p.textContent = country.continents;
+          img.setAttribute("src", `${country.flags.png}`);
+
+          li.appendChild(img);
+          li.appendChild(h1);
+          li.appendChild(h3);
+          li.appendChild(p);
+          block.appendChild(li);
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
