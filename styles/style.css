@@ -31,9 +31,14 @@ button {
 }
 
 select {
-  width: 24%;
+  width: 35%;
   margin-bottom: 20px;
   padding: 7px;
+  margin-top: 20px;
+}
+
+#qita {
+  margin-left: 32px;
 }
 
 #qita input {
